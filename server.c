@@ -6,11 +6,10 @@
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 18:15:31 by mrami             #+#    #+#             */
-/*   Updated: 2023/01/22 16:09:59 by mrami            ###   ########.fr       */
+/*   Updated: 2023/01/24 22:42:41 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
 #include <signal.h>
 
@@ -37,10 +36,12 @@ int main(int argc, char const *argv[])
     pid = getpid();
     ft_printf("Server PID -> %d", pid);
     
-    while (argc  == 1)
+    signal(SIGUSR1, ft_handle_bit);
+    signal(SIGUSR2, ft_handle_bit);
+    if (argc > 1)
+        return;
+    while (1)
     {
-        signal(SIGUSR1, ft_handle_bit);
-        signal(SIGUSR2, ft_handle_bit);
         pause();
     }
     
