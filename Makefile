@@ -6,7 +6,7 @@
 #    By: mrami <mrami@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 17:33:59 by mrami             #+#    #+#              #
-#    Updated: 2023/01/26 02:20:59 by mrami            ###   ########.fr        #
+#    Updated: 2023/01/26 22:26:19 by mrami            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,20 +21,20 @@ all: server client
 bonus: server client
 
 server: server.o libft
-	$(CC) -o $@ $< -Llibft -lft
+	@$(CC) -o $@ $< -Llibft -lft
 
 client: client.o libft
-	$(CC) -o $@ $< -Llibft -lft
+	@$(CC) -o $@ $< -Llibft -lft
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	@$(CC) -c $(CFLAGS) $?
 
 libft:
 	make -C libft
 
 clean:
 	rm -f $(OBJECTS)
-	make -C libft clean
+	@make -C libft clean
 	
 fclean: clean
 	rm -f server client libft/libft.a
