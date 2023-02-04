@@ -6,7 +6,7 @@
 #    By: mrami <mrami@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 17:33:59 by mrami             #+#    #+#              #
-#    Updated: 2023/01/26 22:26:19 by mrami            ###   ########.fr        #
+#    Updated: 2023/02/04 21:27:35 by mrami            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all: server client
-
-bonus: server client
 
 server: server.o libft
 	@$(CC) -o $@ $< -Llibft -lft

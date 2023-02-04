@@ -6,7 +6,7 @@
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:57:55 by mrami             #+#    #+#             */
-/*   Updated: 2023/01/26 22:27:27 by mrami            ###   ########.fr       */
+/*   Updated: 2023/02/04 22:02:15 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int	main(int argc, char const *argv[])
 		}
 		ft_send_bits(pid, '\n');
 	}
+	else
+		ft_putstr_fd("Somthing Worrng Please Try Again!", 1);
 	return (0);
 }
