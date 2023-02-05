@@ -6,12 +6,11 @@
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:21:13 by mrami             #+#    #+#             */
-/*   Updated: 2023/02/05 22:47:07 by mrami            ###   ########.fr       */
+/*   Updated: 2023/02/05 23:20:38 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
 
 static void	ft_handle_bits(int sgl, siginfo_t *info, void *ptr)
 {
@@ -60,4 +59,3 @@ int	main(int argc, char const *argv[])
 		ft_putstr_fd("Somthing Worrng Please Try agin!", 1);
 	return (0);
 }
-
