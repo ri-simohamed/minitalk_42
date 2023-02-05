@@ -5,38 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mrami <mrami@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/22 17:33:59 by mrami             #+#    #+#              #
-#    Updated: 2023/02/04 21:27:35 by mrami            ###   ########.fr        #
+#    Created: 2023/02/05 17:44:38 by mrami             #+#    #+#              #
+#    Updated: 2023/02/05 21:16:43 by mrami            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES = server.c client.c
-OBJECTS = $(SOURCES:.c=.o)
+cc = cc
+SERVER = server
+CLIENT = client
+HEADER = minitalk.h
+CFlags = -Wall -Wextra -Werror
+S_CFiles = server.c ft_helper.c
+S_OFiles = $(S_CFiles:.c=.o)
+C_CFiles = client.c ft_helper.c
+C_OFiles = $(C_CFiles:.c=.o)
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+all: $(SERVER) $(CLIENT)
+	@echo "Making Successful."
 
-all: server client
+$(SERVER): $(S_OFiles)
+		@$(cc) $(S_CFiles) -o $(SERVER)
 
-server: server.o libft
-	@$(CC) -o $@ $< -Llibft -lft
+$(CLIENT): $(C_OFiles)
+		@$(cc) $(C_CFiles) -o $(CLIENT)
 
-client: client.o libft
-	@$(CC) -o $@ $< -Llibft -lft
-
-%.o: %.c
-	@$(CC) -c $(CFLAGS) $?
-
-libft:
-	make -C libft
+%.o : %.c $(HEADER)
+	@$(CC) -c $<
 
 clean:
-	rm -f $(OBJECTS)
-	@make -C libft clean
-	
+		@rm -f $(S_OFiles) $(C_OFiles)
+		@echo "Cleaning Successful."
+
 fclean: clean
-	rm -f server client libft/libft.a
+		@rm -rf $(SERVER) $(CLIENT)
 
 re: fclean all
 
-.PHONY: all bonus libft clean fclean re
+.PHONY: all fclean clean re

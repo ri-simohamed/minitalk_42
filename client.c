@@ -5,16 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 15:57:55 by mrami             #+#    #+#             */
-/*   Updated: 2023/02/04 22:02:15 by mrami            ###   ########.fr       */
+/*   Created: 2023/02/05 15:06:59 by mrami             #+#    #+#             */
+/*   Updated: 2023/02/05 22:33:32 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
-#include "libft/libft.h"
+#include "minitalk.h"
 
-static	void	ft_send_bits(int pid, char c)
+void	ft_send_bits(int pid, char c)
 {
 	int	bit;
 
@@ -31,14 +29,16 @@ static	void	ft_send_bits(int pid, char c)
 
 int	main(int argc, char const *argv[])
 {
-	int	pid;
 	int	i;
+	int	pid;
 
 	i = 0;
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
-		if (pid <= 0)
+		if (pid == 0)
+			return (0);
+		if (argv[1] < 0)
 			return (0);
 		while (argv[2][i] != '\0')
 		{
@@ -47,6 +47,8 @@ int	main(int argc, char const *argv[])
 		ft_send_bits(pid, '\n');
 	}
 	else
-		ft_putstr_fd("Somthing Worrng Please Try Again!", 1);
+	{
+		ft_putstr_fd("Somthing Worrgn Please Try Agin!", 1);
+	}
 	return (0);
 }
