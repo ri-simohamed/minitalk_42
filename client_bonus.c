@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 15:06:59 by mrami             #+#    #+#             */
-/*   Updated: 2023/02/06 17:13:08 by mrami            ###   ########.fr       */
+/*   Created: 2023/02/06 15:55:21 by mrami             #+#    #+#             */
+/*   Updated: 2023/02/06 17:51:15 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_send_bits(int pid, char c)
+static void	ft_send_bits_bonus(int pid, char c)
 {
 	int	bit;
 
@@ -37,19 +37,17 @@ int	main(int argc, char const *argv[])
 	{
 		pid = ft_atoi(argv[1]);
 		if (pid == 0)
-			ft_putstr_fd("Cannot be sand To PID = 0.\n", 1);
-		return (0);
+			return (0);
 		if (argv[1] < 0)
-			ft_putstr_fd("Cannot be sand To PID < 0.", 1);
+			return (0);
 		while (argv[2][i] != '\0')
 		{
-			ft_send_bits(pid, argv[2][i++]);
+			ft_send_bits_bonus(pid, argv[2][i++]);
 		}
-		ft_send_bits(pid, '\n');
+		ft_send_bits_bonus(pid, '\n');
+		ft_putstr_fd("Massege Well Be Send Succssefull.", 1);
 	}
 	else
-	{
-		ft_putstr_fd("Somthing Worrgn Please Try Agin!", 1);
-	}
+		ft_putstr_fd("Somthing Worrng Please Try Agin!.", 1);
 	return (0);
 }
