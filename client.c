@@ -6,7 +6,7 @@
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:06:59 by mrami             #+#    #+#             */
-/*   Updated: 2023/02/06 17:13:08 by mrami            ###   ########.fr       */
+/*   Updated: 2023/02/07 16:59:51 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ int	main(int argc, char const *argv[])
 	{
 		pid = ft_atoi(argv[1]);
 		if (pid == 0)
-			ft_putstr_fd("Cannot be sand To PID = 0.\n", 1);
-		return (0);
+		{
+			ft_putstr_fd("Cannot be send To PID = 0.\n", 1);
+			return (0);
+		}
 		if (argv[1] < 0)
-			ft_putstr_fd("Cannot be sand To PID < 0.", 1);
+			return (0);
 		while (argv[2][i] != '\0')
 		{
 			ft_send_bits(pid, argv[2][i++]);
